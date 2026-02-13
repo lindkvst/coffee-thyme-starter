@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Place Order</title>
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+    </head>
+    <body>
+        <h1>Coffee Thyme</h1>
+
+        <section class="confirmation-box">
+            <h3>Your order:</h3>
+            <p th:text="${coffeeOrder.coffeeSize + ' '
+           + coffeeOrder.coffeeType + ', '
+           + coffeeOrder.milkType + ' milk'}"></p>
+
+        </section>
+
+        <nav class="actions">
+            <a href="/coffee" class="button">Place New Order</a>
+        </nav>
+    </body>
+</html>

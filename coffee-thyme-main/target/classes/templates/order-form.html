@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Place Order</title>
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+    </head>
+    <body>
+        <h1>Coffee Thyme</h1>
+        <form th:action="@{/coffee/order}" th:object="${coffeeOrder}" method="post">
+            <input type="hidden" th:field="*{orderId}" />
+
+            <label for="coffeeType">Coffee Type:</label>
+            <select id="coffeeType" th:field="*{coffeeType}">
+                <option value="" disabled selected>Choose a type…</option>
+                <option th:each="type : ${coffeeTypes}"
+                        th:value="${type}"
+                        th:text="${type}">
+                </option>
+            </select>
+            <br><br>
+
+            <label for="milkType">Milk Type:</label>
+            <select id="milkType" th:field="*{milkType}">
+                <option value="" disabled selected>Choose milk…</option>
+                <option th:each="milk : ${milkTypes}"
+                        th:value="${milk}"
+                        th:text="${milk}">
+                </option>
+            </select>
+            <br><br>
+
+            <fieldset>
+                <legend>Size:</legend>
+                <div th:each="size : ${coffeeSizes}">
+                    <label>
+                        <input type="radio" th:field="*{coffeeSize}" th:value="${size}" />
+                        <span th:text="${size}">Size</span>
+                    </label>
+                </div>
+            </fieldset>
+            <br>
+
+            <button type="submit">Place Order</button>
+        </form>
+
+    </body>
+</html>
